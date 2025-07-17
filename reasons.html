@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reasons Why I Love You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and basics */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff0f5;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #c71585;
+      margin-bottom: 30px;
+      font-weight: 700;
+    }
+
+    /* Heart animation background */
+    .heart-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4081;
+      transform: rotate(-45deg);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.7;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4081;
+      border-radius: 50%;
+    }
+
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: 10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(-45deg);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    /* Container for cards */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Cards for each reason */
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(199, 21, 133, 0.3);
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.5;
+      position: relative;
+    }
+
+    .card::before {
+      content: "💖";
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      opacity: 0.3;
+    }
+
+    /* Back to home link */
+    .back-link {
+      display: block;
+      text-align: center;
+      margin: 30px 0 0;
+      color: #c71585;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .card {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-bg" id="heart-bg"></div>
+
+  <h1>Reasons Why I Love You ❤️</h1>
+
+  <div class="container">
+    <div class="card">You always make me laugh, even on my worst days.</div>
+    <div class="card">Your laugh is literally my favorite sound.</div>
+    <div class="card">Your hugs feel like home.</div>
+    <div class="card">You believe in me more than I believe in myself.</div>
+    <div class="card">You’re my safe place.</div>
+    <div class="card">You have the kindest heart I’ve ever known.</div>
+    <div class="card">You never give up, even when things are hard.</div>
+    <div class="card">You always make time for me.</div>
+    <div class="card">You’re my favorite person to do nothing with.</div>
+    <div class="card">You accept me completely.</div>
+    <div class="card">You give the warmest cuddles in the universe.</div>
+    <div class="card">You have the best smile.</div>
+    <div class="card">You’re so patient with me when I need it most.</div>
+    <div class="card">You make me feel so loved, every single day.</div>
+    <div class="card">Because I can’t imagine life without you.</div>
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <script>
+    // Generate multiple floating hearts for background
+    const heartBg = document.getElementById('heart-bg');
+    const colors = ['#ff4081', '#f06292', '#ec407a', '#e91e63'];
+
+    for(let i=0; i<30; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 4 + Math.random() * 4 + 's';
+      heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      heart.style.setProperty('--animation-delay', `${Math.random() * 6}s`);
+      heartBg.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
